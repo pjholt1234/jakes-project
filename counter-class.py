@@ -29,6 +29,7 @@ class App:
         print(self.count)
         self.count = self.count+1
         self.setText()
+        #Testing
 
     def buildUi(self):
         button = Button(self.tk, text=' 1 ', fg='black', bg='red', command=self.counter, height=1, width=7)
