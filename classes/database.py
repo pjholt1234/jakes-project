@@ -66,18 +66,20 @@ class Database:
                 self._connected = True
                 return connection
     
-
     def query(self, query):
         if(self._connected):
             try:
                 mycursor = self._db.cursor()
                 mycursor.execute(query)
+
             except (mysql.Error, mysql.Warning) as e:
                 print("Error while running query: '" + query + "': ", e)
                 return None
             finally:
-                print('Fetching..')
-                return mycursor.fetchall()     
+                print('Fetching')
+                result = mycursor.fetchall()
+                
+                return [list(item) for item in result]     
         else:
             print("No Database Connection")
             return None
