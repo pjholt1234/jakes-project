@@ -1,5 +1,7 @@
 import tkinter as tk
+
 import bcrypt
+
 
 class Login(tk.Frame):
     def __init__(self, parent):
@@ -52,9 +54,11 @@ class Login(tk.Frame):
                 self.setStatus(text="Logged In " + self.username.get(), text_colour = '#00FF00')
 
                 self.parent.user.hydrate(result[0][0],result[0][1], result[0][2])
+
+                self.parent.render()
             
             else: 
-                self.setStatus(text="Invalid Password", text_colour = '#FF0000')
+                self.setStatus(text="Invalid Password", text_colour = '#FF0000')     
 
     def setStatus(self, text = '', text_colour = '#000000', bg_colour = '#BEBEBE'):
         self.status.config(text=text, fg = text_colour, background = bg_colour)
