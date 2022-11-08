@@ -71,7 +71,8 @@ class Database:
             try:
                 mycursor = self._db.cursor()
                 mycursor.execute(query)
-
+                self._db.commit()
+                
             except (mysql.Error, mysql.Warning) as e:
                 print("Error while running query: '" + query + "': ", e)
                 return None
